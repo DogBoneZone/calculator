@@ -1,0 +1,32 @@
+html {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgba(34, 77, 34, 0.678);
+}
+#calcBody {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 400px;
+    background: rgb(161, 159, 35);
+    border: groove;
+}
+#calcDisplay {
+    background: rgba(128, 128, 128, 0.603);
+    border: ridge black;
+    text-align: right;
+    font-size: xx-large;
+}
+#workArea {
+    display: flex;
+    justify-content: center;
+}
+#operators {
+    display: grid;
+    grid-template-columns: repeat(1, 60px);
+    grid-template-rows: repeat(4, 60px);
+}
+#digits {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+}
