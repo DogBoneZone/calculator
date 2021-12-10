@@ -15,6 +15,22 @@ const createClearButtons = () => {
         btn.setAttribute("id", `${command.toLowerCase()}`);
         btn.textContent = `${command.toUpperCase()}`;
         topButtonRow.appendChild(btn);
+
+        btn.addEventListener("click", (event) => {
+            let stringArray = [...calcDisplay.textContent];
+            let length = stringArray.length - 1;
+
+            if (command === "Clear") {
+                calcDisplay.textContent = 0;
+            }
+            if (command === "Delete") {
+                if (stringArray.length > 1) {
+                    calcDisplay.textContent = stringArray.splice(1, length).join('');
+                } else {
+                    calcDisplay.textContent = 0;
+                }
+            }
+        })
     }};
 
 const createDigitButtons = () => {
@@ -23,10 +39,16 @@ const createDigitButtons = () => {
         btn.setAttribute("id", `btn${digit}`);
         btn.textContent = `${digit}`;
         digitBtns.appendChild(btn);
+
         btn.addEventListener("click", (event) => {
-            let input = event.target.value;
-            calcDisplay.textContent += input;
-            console.log(calcDisplay.textContent);
+            if (btn === "=") {
+                //NEED TO FIND OUT HOW TO EVALUATE A STRING
+            }
+            if (calcDisplay.textContent == 0) {
+                calcDisplay.textContent = digit;
+            } else {
+                calcDisplay.textContent += digit;
+            }
         });
 }};
 
@@ -38,6 +60,13 @@ const createOperatorButtons = () => {
 
         if (operator === "add") {
             btn.textContent = "+";
+            btn.addEventListener("click", () => {
+                let stringArray = [...calcDisplay.textContent];
+                let length = stringArray.length -1;
+                if (stringArray[length] !== '+') {
+                    calcDisplay.textContent += btn.textContent;
+                }
+            })
         } else if (operator === "subtract") {
             btn.textContent = "-";
         } else if (operator === "multiply") {
@@ -49,5 +78,6 @@ const createOperatorButtons = () => {
         operatorButtons.appendChild(btn);
 }};
 
+createClearButtons();
 createDigitButtons();
 createOperatorButtons();
