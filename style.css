@@ -1,20 +1,63 @@
+@font-face {
+    font-family: 'Digital';
+    src: url(./fonts/digital-counter-7.regular.ttf);
+}
+@font-face {
+    font-family: 'Calculator';
+    src: url(./fonts/digital-7.regular.ttf);
+}
 html {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: rgba(34, 77, 34, 0.678);
+    font-family:'Calculator';
+    background: url(./images/circuitBoard.jpg)
+}
+header {
+    border-radius: 10px;
+    background: rgba(241, 241, 241, 0.767);
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 #calcBody {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 320px;
-    height: 400px;
-    background: rgb(161, 159, 35);
-    border: groove;
+    background: rgb(41, 94, 56);
+    border: solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px;
 }
 #calcDisplay {
     background: rgba(128, 128, 128, 0.603);
     border: ridge black;
     text-align: right;
     font-size: xx-large;
+    overflow-wrap: break-word;
+    border-radius: 10px;
+    width: 280px;
+    margin: 20px 0 0 0;
+}
+#calcHistory {
+    font-size: smaller;
+    visibility: hidden;
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
+#calcOutput {
+    font-size: 55px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
 }
 #calcButtons {
     display: flex;
@@ -41,4 +84,30 @@ html {
     display: grid;
     grid-template-columns: repeat(3, 60px);
     grid-template-rows: repeat(3, 60px);
+}
+
+/* Styles for buttons */
+button {
+    background: rgb(197, 197, 197);
+    border: black solid 2px;
+    margin: 5px;
+    border-radius: 10px;
+}
+#clear {
+    background: rgb(151, 13, 13);
+    color: white;
+}
+#delete {
+    background:rgb(165, 45, 8);
+    color: white;
+}
+button:hover {
+    background: rgb(216, 216, 216);
+}
+button.operator {
+    background: rgb(51, 49, 49);
+    color: white;
+}
+button.operator:hover {
+    background: black;
 }
