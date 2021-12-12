@@ -12,6 +12,18 @@ let num1;
 let num2;
 let operatorIndex;
 
+// Keyboard Inputs
+window.addEventListener("keydown", (e) => {
+    console.log(e.key);
+    if (e.key >= 0 && e.key <= 9) {document.querySelector(`#btn${e.key}`).click()}
+    if (e.key === '.') {document.querySelector('#btnDecimal').click()}
+    if (e.key === 'Enter'||e.key === '=') {document.querySelector('#btnEval').click()}
+    if (e.key === '+') {document.querySelector('#btnAdd').click()}
+    if (e.key === '*') {document.querySelector('#btnx').click()}
+    if (e.key === '/') {document.querySelector('#btn÷').click()}
+    if (e.key === '-') {document.querySelector('#btnSub').click()}
+})
+
 // Create buttons & Listeners
 const createClearButtons = () => {
     for (let command of clearButtonArray) {
@@ -49,11 +61,17 @@ const createDigitButtons = () => {
         btn.textContent = `${digit}`;
         digitBtns.appendChild(btn);
 
-        if (btn.id === 'btn.'||btn.id === 'btn=') {
+        // Re-ID decimal and eval button
+        if (btn.textContent === '.') {btn.setAttribute("id", "btnDecimal")}
+        if (btn.textContent === '=') {btn.setAttribute("id", "btnEval")}
+
+        // Assign Style Class
+        if (btn.id === 'btn.'||btn.id === 'btnEval') {
             btn.classList = 'operator';
         }
 
-        if (btn.id !== 'btn=') {
+        //Logic
+        if (btn.id !== 'btnEval') {
             btn.addEventListener("click", () => {
                 let stringArray = [...calcOutput.textContent];
                 let length = stringArray.length - 1;
@@ -61,7 +79,7 @@ const createDigitButtons = () => {
                 if (operatorIndex === undefined) {
                     if (calcOutput.textContent == 0||calcOutput.textContent == '') {
                         calcOutput.textContent = digit;
-                    } else if (stringArray.slice(0, length + 1).some(checkDecimals) && btn.id == 'btn.') {
+                    } else if (stringArray.slice(0, length + 1).some(checkDecimals) && btn.id == 'btnDecimal') {
                         console.log("Number already contains a decimal")
                     } else {
                         calcOutput.textContent += digit;
@@ -69,7 +87,7 @@ const createDigitButtons = () => {
                 }
 
                 else if (operatorIndex !== undefined) {
-                    if (stringArray.slice(operatorIndex+1, length + 1).some(checkDecimals) && btn.id == 'btn.') {
+                    if (stringArray.slice(operatorIndex+1, length + 1).some(checkDecimals) && btn.id == 'btnDecimal') {
                         console.log("Number already contains a decimal")
                     } else {
                         calcOutput.textContent += digit;
@@ -95,6 +113,10 @@ const createOperatorButtons = () => {
         btn.classList = 'operator';
         btn.textContent = operator;
         btn.style.padding = "10px";
+
+        // Re-ID Plus and Minus Button
+        if (btn.textContent === '+') {btn.setAttribute("id", "btnAdd")};
+        if (btn.textContent === '-') {btn.setAttribute("id", "btnSub")};
 
         btn.addEventListener("click", () => {
             let stringArray = [...calcOutput.textContent];
