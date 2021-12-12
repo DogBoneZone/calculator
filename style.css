@@ -8,13 +8,16 @@
 }
 html {
     font-family:'Calculator';
-    background: url(./images/circuitBoard.jpg)
+    background: linear-gradient(rgb(163, 163, 204), black) no-repeat;
+    background-size: contain;
+    height: 100%;
 }
 header {
     border-radius: 10px;
     background: rgba(241, 241, 241, 0.767);
     padding: 10px;
-    margin: 0 0 10px 0;
+    margin: 0 0 20px 0;
+    box-shadow: 10px 10px 15px;
 }
 body {
     display: flex;
