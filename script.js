@@ -12,7 +12,7 @@ let num1;
 let num2;
 let operatorIndex;
 
-// Create buttons
+// Create buttons & Listeners
 const createClearButtons = () => {
     for (let command of clearButtonArray) {
         let btn = document.createElement("button");
@@ -117,6 +117,8 @@ const createOperatorButtons = () => {
     operatorButtons.appendChild(btn);
 }};
 
+
+// Functions
 const evaluateString = (a, b) => {
     let stringArray = [...calcOutput.textContent];
     let output;
