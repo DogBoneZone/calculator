@@ -22,6 +22,7 @@ window.addEventListener("keydown", (e) => {
     if (e.key === '*') {document.querySelector('#btnx').click()}
     if (e.key === '/') {document.querySelector('#btn÷').click()}
     if (e.key === '-') {document.querySelector('#btnSub').click()}
+    if (e.key === 'Backspace' ||e.key === 'Delete') {document.querySelector('#delete').click()}
 })
 
 // Create buttons & Listeners
